@@ -1,0 +1,20 @@
+// Raspberry Pi IoT Training with Node Red
+// Module 4 - Sensehat with Node-Red
+// Author: Dr. Alfred Ang
+
+// Show Temperature data on a gauge
+var msg.paypload = msg.payload.temperature;
+return msg;
+
+// Ex: Show Temperature, Pressure and Humidity data on 3 gauges
+var temp = {payload: msg.payload.temperature};
+var press = {payload: msg.payload.pressure};
+var humid = {payload: msg.payload.humidity};
+
+return [temp, press,humid];
+
+//Ex: Display temperature on the LED matrix
+[{"id":"8bade6be.c625c8","type":"tab","label":"Flow 1"},{"id":"d0ef9f1a.94e76","type":"function","z":"8bade6be.c625c8","name":"","func":"msg.payload =   msg.payload.temperature;\nreturn msg;","outputs":1,"noerr":0,"x":348,"y":223,"wires":[["2c0c069f.668d7a"]]},{"id":"15574e0.7823cb2","type":"rpi-sensehat in","z":"8bade6be.c625c8","name":"","motion":false,"env":true,"stick":false,"x":125,"y":221,"wires":[["d0ef9f1a.94e76"]]},{"id":"2c0c069f.668d7a","type":"rpi-sensehat out","z":"8bade6be.c625c8","name":"","x":542,"y":222,"wires":[]}]
+
+
+ 
